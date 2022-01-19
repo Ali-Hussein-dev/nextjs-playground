@@ -26,10 +26,11 @@ export async function getServerSideProps(ctx) {
   console.log({ vercel_URL, vercelEnv });
 
   setter.set('auth', true, { vercel_URL });
-
+  const host = ctx.req.headers.host;
   return {
     props: {
       env: JSON.stringify({
+        host,
         vercelEnv,
         vercel_URL,
         ...process.env,
