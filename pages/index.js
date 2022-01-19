@@ -17,7 +17,7 @@ export default function Home({ env }) {
 
 export async function getStaticProps() {
   // Call an external API endpoint to get posts
-  const envs = JSON.stringify(process.env);
+  const env = JSON.stringify(process.env);
   // By returning { props: { posts } }, the Blog component
   // will receive `posts` as a prop at build time
   return {
