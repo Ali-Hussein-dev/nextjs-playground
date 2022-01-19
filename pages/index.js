@@ -21,16 +21,19 @@ export default function Home({ env }) {
 export async function getServerSideProps(ctx) {
   const setter = new Cookies(ctx.req, ctx.res);
 
-  const domain = process.env.VERCEL_URL;
-  const vercelEnv = process.env.VERCEL_ENV;
-  console.log({ domain, vercelEnv });
+  const vercel_URL = process.env.VERCEL_URL || '';
+  const vercelEnv = process.env.VERCEL_ENV || '';
+  console.log({ vercel_URL, vercelEnv });
 
-  setter.set('auth', true, { domain });
+  setter.set('auth', true, { vercel_URL });
 
-  const env = JSON.stringify(process.env);
   return {
     props: {
-      env,
+      env: JSON.stringify({
+        vercelEnv,
+        vercel_URL,
+        ...process.env,
+      }),
     },
   };
 }
