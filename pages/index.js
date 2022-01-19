@@ -1,7 +1,7 @@
 import Head from 'next/head';
 
 export default function Home({ env }) {
-  console.log('env: ', env);
+  console.log('env: ', JSON.parse(env));
   return (
     <div>
       <Head>
@@ -9,7 +9,7 @@ export default function Home({ env }) {
       </Head>
 
       <main className="bg-slate-800 min-h-screen text-slate-200 p-2">
-        Env variables: <pre>{JSON.stringify(env, 2, null)}</pre>
+        Env variables: <pre>{env}</pre>
       </main>
     </div>
   );
